@@ -4,6 +4,7 @@ import Prelude
 
 import Data.Array (filter)
 import Data.Generic.Rep (class Generic)
+import Data.Maybe (Maybe)
 import Data.Newtype (class Newtype)
 import Data.Show.Generic (genericShow)
 import Effect (Effect)
@@ -16,6 +17,8 @@ derive newtype instance showCSV :: Show CSV
 class ToCSV a where
   toCSV :: a -> CSV
 
+class FromCSV a where
+  fromCSV :: CSV -> Maybe a
 
 newtype FullName = FullName String
 derive newtype instance showFullName :: Show FullName
